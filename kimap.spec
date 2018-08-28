@@ -7,7 +7,7 @@
 %define keepstatic 1
 Name     : kimap
 Version  : 18.08.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/applications/18.08.0/src/kimap-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/kimap-18.08.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.08.0/src/kimap-18.08.0.tar.xz.sig
@@ -17,6 +17,7 @@ License  : GPL-2.0 LGPL-2.1
 Requires: kimap-lib
 Requires: kimap-license
 Requires: kimap-locales
+Requires: kimap-data
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : cyrus-sasl-dev
@@ -31,10 +32,19 @@ It manages connections, encryption and parameter quoting and encoding, but
 otherwise provides quite a low-level interface to the protocol.  This library
 does not implement an IMAP client; it merely makes it easier to do so.
 
+%package data
+Summary: data components for the kimap package.
+Group: Data
+
+%description data
+data components for the kimap package.
+
+
 %package dev
 Summary: dev components for the kimap package.
 Group: Development
 Requires: kimap-lib
+Requires: kimap-data
 Provides: kimap-devel
 
 %description dev
@@ -44,6 +54,7 @@ dev components for the kimap package.
 %package lib
 Summary: lib components for the kimap package.
 Group: Libraries
+Requires: kimap-data
 Requires: kimap-license
 
 %description lib
@@ -74,7 +85,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535253028
+export SOURCE_DATE_EPOCH=1535429734
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -82,7 +93,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535253028
+export SOURCE_DATE_EPOCH=1535429734
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kimap
 cp COPYING %{buildroot}/usr/share/doc/kimap/COPYING
@@ -94,6 +105,11 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/xdg/kimap.categories
+/usr/share/xdg/kimap.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
