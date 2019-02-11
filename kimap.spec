@@ -6,24 +6,23 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 18.08.0
-Release  : 3
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kimap-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kimap-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kimap-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 4
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
-Requires: kimap-lib
-Requires: kimap-license
-Requires: kimap-locales
-Requires: kimap-data
+Requires: kimap-data = %{version}-%{release}
+Requires: kimap-lib = %{version}-%{release}
+Requires: kimap-license = %{version}-%{release}
+Requires: kimap-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : cyrus-sasl-dev
+BuildRequires : extra-cmake-modules pkgconfig(libsasl2)
 BuildRequires : kmime-dev
-BuildRequires : pkgconfig(libsasl2)
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 # KIMAP #
@@ -43,9 +42,9 @@ data components for the kimap package.
 %package dev
 Summary: dev components for the kimap package.
 Group: Development
-Requires: kimap-lib
-Requires: kimap-data
-Provides: kimap-devel
+Requires: kimap-lib = %{version}-%{release}
+Requires: kimap-data = %{version}-%{release}
+Provides: kimap-devel = %{version}-%{release}
 
 %description dev
 dev components for the kimap package.
@@ -54,8 +53,8 @@ dev components for the kimap package.
 %package lib
 Summary: lib components for the kimap package.
 Group: Libraries
-Requires: kimap-data
-Requires: kimap-license
+Requires: kimap-data = %{version}-%{release}
+Requires: kimap-license = %{version}-%{release}
 
 %description lib
 lib components for the kimap package.
@@ -78,26 +77,26 @@ locales components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-18.08.0
+%setup -q -n kimap-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535429734
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549859921
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535429734
+export SOURCE_DATE_EPOCH=1549859921
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kimap
-cp COPYING %{buildroot}/usr/share/doc/kimap/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/kimap/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/kimap
+cp COPYING %{buildroot}/usr/share/package-licenses/kimap/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kimap/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -247,12 +246,12 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.9.0
+/usr/lib64/libKF5IMAP.so.5.10.2
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kimap/COPYING
-/usr/share/doc/kimap/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kimap/COPYING
+/usr/share/package-licenses/kimap/COPYING.LIB
 
 %files locales -f libkimap5.lang
 %defattr(-,root,root,-)
