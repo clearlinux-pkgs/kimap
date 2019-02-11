@@ -7,7 +7,7 @@
 %define keepstatic 1
 Name     : kimap
 Version  : 18.12.2
-Release  : 4
+Release  : 5
 URL      : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz.sig
@@ -20,8 +20,10 @@ Requires: kimap-license = %{version}-%{release}
 Requires: kimap-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : cyrus-sasl-dev
 BuildRequires : extra-cmake-modules pkgconfig(libsasl2)
 BuildRequires : kmime-dev
+BuildRequires : pkgconfig(libsasl2)
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -84,15 +86,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549859921
+export SOURCE_DATE_EPOCH=1549868205
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549859921
+export SOURCE_DATE_EPOCH=1549868205
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp COPYING %{buildroot}/usr/share/package-licenses/kimap/COPYING
