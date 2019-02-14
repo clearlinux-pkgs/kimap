@@ -7,7 +7,7 @@
 %define keepstatic 1
 Name     : kimap
 Version  : 18.12.2
-Release  : 6
+Release  : 7
 URL      : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.2/src/kimap-18.12.2.tar.xz.sig
