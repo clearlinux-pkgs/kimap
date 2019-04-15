@@ -7,7 +7,7 @@
 %define keepstatic 1
 Name     : kimap
 Version  : 18.12.3
-Release  : 8
+Release  : 9
 URL      : https://download.kde.org/stable/applications/18.12.3/src/kimap-18.12.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.3/src/kimap-18.12.3.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.3/src/kimap-18.12.3.tar.xz.sig
@@ -79,6 +79,15 @@ Group: Default
 locales components for the kimap package.
 
 
+%package staticdev
+Summary: staticdev components for the kimap package.
+Group: Default
+Requires: kimap-dev = %{version}-%{release}
+
+%description staticdev
+staticdev components for the kimap package.
+
+
 %prep
 %setup -q -n kimap-18.12.3
 
@@ -87,16 +96,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552012943
+export SOURCE_DATE_EPOCH=1555333953
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552012943
+export SOURCE_DATE_EPOCH=1555333953
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp COPYING %{buildroot}/usr/share/package-licenses/kimap/COPYING
@@ -239,7 +247,6 @@ popd
 /usr/include/KF5/kimap_version.h
 /usr/include/KF5/kimaptest/fakeserver.h
 /usr/include/KF5/kimaptest/mockjob.h
-/usr/lib64/*.a
 /usr/lib64/cmake/KF5IMAP/KF5IMAPConfig.cmake
 /usr/lib64/cmake/KF5IMAP/KF5IMAPConfigVersion.cmake
 /usr/lib64/cmake/KF5IMAP/KF5IMAPTargets-relwithdebinfo.cmake
@@ -256,6 +263,10 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/kimap/COPYING
 /usr/share/package-licenses/kimap/COPYING.LIB
+
+%files staticdev
+%defattr(-,root,root,-)
+/usr/lib64/libkimaptest.a
 
 %files locales -f libkimap5.lang
 %defattr(-,root,root,-)
