@@ -48,6 +48,7 @@ Requires: kimap-lib = %{version}-%{release}
 Requires: kimap-data = %{version}-%{release}
 Provides: kimap-devel = %{version}-%{release}
 Requires: kimap = %{version}-%{release}
+Requires: kimap-staticdev
 
 %description dev
 dev components for the kimap package.
@@ -82,7 +83,6 @@ locales components for the kimap package.
 %package staticdev
 Summary: staticdev components for the kimap package.
 Group: Default
-Requires: kimap-dev = %{version}-%{release}
 
 %description staticdev
 staticdev components for the kimap package.
