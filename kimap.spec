@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 18.12.3
-Release  : 9
-URL      : https://download.kde.org/stable/applications/18.12.3/src/kimap-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/kimap-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/kimap-18.12.3.tar.xz.sig
+Version  : 19.04.0
+Release  : 10
+URL      : https://download.kde.org/stable/applications/19.04.0/src/kimap-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/kimap-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/kimap-19.04.0.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -89,14 +89,14 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-18.12.3
+%setup -q -n kimap-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555333953
+export SOURCE_DATE_EPOCH=1555634056
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -104,7 +104,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555333953
+export SOURCE_DATE_EPOCH=1555634056
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp COPYING %{buildroot}/usr/share/package-licenses/kimap/COPYING
@@ -150,7 +150,9 @@ popd
 /usr/include/KF5/KIMAP/KIMAP/MetaDataJobBase
 /usr/include/KF5/KIMAP/KIMAP/MoveJob
 /usr/include/KF5/KIMAP/KIMAP/MyRightsJob
+/usr/include/KF5/KIMAP/KIMAP/NamespaceJob
 /usr/include/KF5/KIMAP/KIMAP/QuotaJobBase
+/usr/include/KF5/KIMAP/KIMAP/RFCCodecs
 /usr/include/KF5/KIMAP/KIMAP/RenameJob
 /usr/include/KF5/KIMAP/KIMAP/SearchJob
 /usr/include/KF5/KIMAP/KIMAP/SelectJob
@@ -189,7 +191,9 @@ popd
 /usr/include/KF5/KIMAP/kimap/MetaDataJobBase
 /usr/include/KF5/KIMAP/kimap/MoveJob
 /usr/include/KF5/KIMAP/kimap/MyRightsJob
+/usr/include/KF5/KIMAP/kimap/NamespaceJob
 /usr/include/KF5/KIMAP/kimap/QuotaJobBase
+/usr/include/KF5/KIMAP/kimap/RFCCodecs
 /usr/include/KF5/KIMAP/kimap/RenameJob
 /usr/include/KF5/KIMAP/kimap/SearchJob
 /usr/include/KF5/KIMAP/kimap/SelectJob
@@ -257,7 +261,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.10.3
+/usr/lib64/libKF5IMAP.so.5.11.0
 
 %files license
 %defattr(0644,root,root,0755)
