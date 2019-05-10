@@ -49,6 +49,7 @@ Requires: kimap-data = %{version}-%{release}
 Provides: kimap-devel = %{version}-%{release}
 Requires: kimap = %{version}-%{release}
 Requires: kimap = %{version}-%{release}
+Requires: kimap-staticdev
 
 %description dev
 dev components for the kimap package.
