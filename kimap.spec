@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 19.04.0
-Release  : 12
-URL      : https://download.kde.org/stable/applications/19.04.0/src/kimap-19.04.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.0/src/kimap-19.04.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.0/src/kimap-19.04.0.tar.xz.sig
+Version  : 19.04.1
+Release  : 13
+URL      : https://download.kde.org/stable/applications/19.04.1/src/kimap-19.04.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.1/src/kimap-19.04.1.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.1/src/kimap-19.04.1.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -48,6 +48,7 @@ Requires: kimap-lib = %{version}-%{release}
 Requires: kimap-data = %{version}-%{release}
 Provides: kimap-devel = %{version}-%{release}
 Requires: kimap = %{version}-%{release}
+Requires: kimap = %{version}-%{release}
 
 %description dev
 dev components for the kimap package.
@@ -83,20 +84,21 @@ locales components for the kimap package.
 Summary: staticdev components for the kimap package.
 Group: Default
 Requires: kimap-dev = %{version}-%{release}
+Requires: kimap-dev = %{version}-%{release}
 
 %description staticdev
 staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-19.04.0
+%setup -q -n kimap-19.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557017693
+export SOURCE_DATE_EPOCH=1557494809
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -111,7 +113,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557017693
+export SOURCE_DATE_EPOCH=1557494809
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp COPYING %{buildroot}/usr/share/package-licenses/kimap/COPYING
@@ -268,7 +270,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.11.0
+/usr/lib64/libKF5IMAP.so.5.11.1
 
 %files license
 %defattr(0644,root,root,0755)
