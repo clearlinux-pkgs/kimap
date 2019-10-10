@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 19.08.1
-Release  : 18
-URL      : https://download.kde.org/stable/applications/19.08.1/src/kimap-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/kimap-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/kimap-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 19
+URL      : https://download.kde.org/stable/applications/19.08.2/src/kimap-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/kimap-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/kimap-19.08.2.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -20,10 +20,8 @@ Requires: kimap-license = %{version}-%{release}
 Requires: kimap-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : cyrus-sasl-dev
 BuildRequires : extra-cmake-modules pkgconfig(libsasl2)
 BuildRequires : kmime-dev
-BuildRequires : pkgconfig(libsasl2)
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -91,14 +89,14 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-19.08.1
+%setup -q -n kimap-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567746817
+export SOURCE_DATE_EPOCH=1570745185
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -111,11 +109,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567746817
+export SOURCE_DATE_EPOCH=1570745185
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp COPYING %{buildroot}/usr/share/package-licenses/kimap/COPYING
@@ -272,7 +270,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.12.1
+/usr/lib64/libKF5IMAP.so.5.12.2
 
 %files license
 %defattr(0644,root,root,0755)
