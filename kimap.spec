@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 19.08.2
-Release  : 19
-URL      : https://download.kde.org/stable/applications/19.08.2/src/kimap-19.08.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.2/src/kimap-19.08.2.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.2/src/kimap-19.08.2.tar.xz.sig
+Version  : 19.08.3
+Release  : 20
+URL      : https://download.kde.org/stable/applications/19.08.3/src/kimap-19.08.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.3/src/kimap-19.08.3.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.3/src/kimap-19.08.3.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -89,14 +89,14 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-19.08.2
+%setup -q -n kimap-19.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570745185
+export SOURCE_DATE_EPOCH=1573185688
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -113,11 +113,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570745185
+export SOURCE_DATE_EPOCH=1573185688
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
-cp COPYING %{buildroot}/usr/share/package-licenses/kimap/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kimap/COPYING.LIB
+cp %{_builddir}/kimap-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/kimap/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kimap-19.08.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/kimap/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -270,12 +270,12 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.12.2
+/usr/lib64/libKF5IMAP.so.5.12.3
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kimap/COPYING
-/usr/share/package-licenses/kimap/COPYING.LIB
+/usr/share/package-licenses/kimap/7c203dee3a03037da436df03c4b25b659c073976
+/usr/share/package-licenses/kimap/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 
 %files staticdev
 %defattr(-,root,root,-)
