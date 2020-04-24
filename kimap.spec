@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 19.12.3
-Release  : 24
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/kimap-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/kimap-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/kimap-19.12.3.tar.xz.sig
+Version  : 20.04.0
+Release  : 25
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/kimap-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kimap-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kimap-20.04.0.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -89,15 +89,15 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-19.12.3
-cd %{_builddir}/kimap-19.12.3
+%setup -q -n kimap-20.04.0
+cd %{_builddir}/kimap-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583506412
+export SOURCE_DATE_EPOCH=1587692415
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -114,11 +114,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583506412
+export SOURCE_DATE_EPOCH=1587692415
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
-cp %{_builddir}/kimap-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/kimap/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kimap-19.12.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/kimap/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kimap-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/kimap/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kimap-20.04.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kimap/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -271,7 +271,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.13.3
+/usr/lib64/libKF5IMAP.so.5.14.0
 
 %files license
 %defattr(0644,root,root,0755)
