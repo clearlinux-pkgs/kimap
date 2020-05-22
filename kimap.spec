@@ -7,7 +7,7 @@
 %define keepstatic 1
 Name     : kimap
 Version  : 20.04.1
-Release  : 27
+Release  : 28
 URL      : https://download.kde.org/stable/release-service/20.04.1/src/kimap-20.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/20.04.1/src/kimap-20.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/20.04.1/src/kimap-20.04.1.tar.xz.sig
