@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 20.08.3
-Release  : 32
-URL      : https://download.kde.org/stable/release-service/20.08.3/src/kimap-20.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.08.3/src/kimap-20.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.08.3/src/kimap-20.08.3.tar.xz.sig
+Version  : 20.12.0
+Release  : 33
+URL      : https://download.kde.org/stable/release-service/20.12.0/src/kimap-20.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.12.0/src/kimap-20.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.12.0/src/kimap-20.12.0.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0
@@ -92,15 +92,15 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-20.08.3
-cd %{_builddir}/kimap-20.08.3
+%setup -q -n kimap-20.12.0
+cd %{_builddir}/kimap-20.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604611580
+export SOURCE_DATE_EPOCH=1607910428
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -116,12 +116,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604611580
+export SOURCE_DATE_EPOCH=1607910428
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
-cp %{_builddir}/kimap-20.08.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/kimap-20.08.3/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kimap-20.08.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kimap-20.12.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kimap-20.12.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kimap-20.12.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
 pushd clr-build
 %make_install
 popd
@@ -146,6 +146,7 @@ popd
 /usr/include/KF5/KIMAP/KIMAP/CreateJob
 /usr/include/KF5/KIMAP/KIMAP/DeleteAclJob
 /usr/include/KF5/KIMAP/KIMAP/DeleteJob
+/usr/include/KF5/KIMAP/KIMAP/EnableJob
 /usr/include/KF5/KIMAP/KIMAP/ExpungeJob
 /usr/include/KF5/KIMAP/KIMAP/FetchJob
 /usr/include/KF5/KIMAP/KIMAP/GetAclJob
@@ -187,6 +188,7 @@ popd
 /usr/include/KF5/KIMAP/kimap/CreateJob
 /usr/include/KF5/KIMAP/kimap/DeleteAclJob
 /usr/include/KF5/KIMAP/kimap/DeleteJob
+/usr/include/KF5/KIMAP/kimap/EnableJob
 /usr/include/KF5/KIMAP/kimap/ExpungeJob
 /usr/include/KF5/KIMAP/kimap/FetchJob
 /usr/include/KF5/KIMAP/kimap/GetAclJob
@@ -228,6 +230,7 @@ popd
 /usr/include/KF5/KIMAP/kimap/createjob.h
 /usr/include/KF5/KIMAP/kimap/deleteacljob.h
 /usr/include/KF5/KIMAP/kimap/deletejob.h
+/usr/include/KF5/KIMAP/kimap/enablejob.h
 /usr/include/KF5/KIMAP/kimap/expungejob.h
 /usr/include/KF5/KIMAP/kimap/fetchjob.h
 /usr/include/KF5/KIMAP/kimap/getacljob.h
@@ -274,7 +277,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.15.3
+/usr/lib64/libKF5IMAP.so.5.16.0
 
 %files license
 %defattr(0644,root,root,0755)
