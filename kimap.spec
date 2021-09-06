@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 21.04.2
-Release  : 37
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kimap-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kimap-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kimap-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 38
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kimap-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kimap-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kimap-21.08.1.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0
@@ -26,15 +26,10 @@ BuildRequires : kcoreaddons-dev
 BuildRequires : ki18n-dev
 BuildRequires : kio-dev
 BuildRequires : kmime-dev
-BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
-# KIMAP #
-This library provides a job-based API for interacting with an IMAP4rev1 server.
-It manages connections, encryption and parameter quoting and encoding, but
-otherwise provides quite a low-level interface to the protocol.  This library
-does not implement an IMAP client; it merely makes it easier to do so.
+SPDX-License-Identifier: CC0-1.0
 
 %package data
 Summary: data components for the kimap package.
@@ -92,38 +87,40 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-21.04.2
-cd %{_builddir}/kimap-21.04.2
+%setup -q -n kimap-21.08.1
+cd %{_builddir}/kimap-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623354542
+export SOURCE_DATE_EPOCH=1630903444
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623354542
+export SOURCE_DATE_EPOCH=1630903444
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
-cp %{_builddir}/kimap-21.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kimap/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/kimap-21.04.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kimap/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kimap-21.04.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/kimap-21.04.2/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kimap-21.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kimap-21.08.1/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kimap/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/kimap-21.08.1/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kimap/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kimap-21.08.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kimap-21.08.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kimap-21.08.1/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kimap-21.08.1/README.md.license %{buildroot}/usr/share/package-licenses/kimap/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/kimap-21.08.1/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/kimap/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -279,12 +276,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.17.2
+/usr/lib64/libKF5IMAP.so.5.18.1
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/kimap/20079e8f79713dce80ab09774505773c926afa2a
 /usr/share/package-licenses/kimap/29fb05b49e12a380545499938c4879440bd8851e
+/usr/share/package-licenses/kimap/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/kimap/8287b608d3fa40ef401339fd907ca1260c964123
 /usr/share/package-licenses/kimap/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
