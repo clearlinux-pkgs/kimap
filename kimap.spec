@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 22.08.1
-Release  : 51
-URL      : https://download.kde.org/stable/release-service/22.08.1/src/kimap-22.08.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.1/src/kimap-22.08.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.1/src/kimap-22.08.1.tar.xz.sig
+Version  : 22.08.2
+Release  : 52
+URL      : https://download.kde.org/stable/release-service/22.08.2/src/kimap-22.08.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.08.2/src/kimap-22.08.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.08.2/src/kimap-22.08.2.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0
@@ -87,15 +87,15 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-22.08.1
-cd %{_builddir}/kimap-22.08.1
+%setup -q -n kimap-22.08.2
+cd %{_builddir}/kimap-22.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662770205
+export SOURCE_DATE_EPOCH=1665720618
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -111,9 +111,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662770205
+export SOURCE_DATE_EPOCH=1665720618
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
+cp %{_builddir}/kimap-%{version}/.codespellrc.license %{buildroot}/usr/share/package-licenses/kimap/c011fda7746c087a127999da1c4044854ee42238 || :
 cp %{_builddir}/kimap-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/kimap/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
 cp %{_builddir}/kimap-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kimap/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9 || :
 cp %{_builddir}/kimap-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kimap/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -278,7 +279,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.21.1
+/usr/lib64/libKF5IMAP.so.5.21.2
 
 %files license
 %defattr(0644,root,root,0755)
@@ -286,6 +287,7 @@ popd
 /usr/share/package-licenses/kimap/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/kimap/8287b608d3fa40ef401339fd907ca1260c964123
 /usr/share/package-licenses/kimap/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/kimap/c011fda7746c087a127999da1c4044854ee42238
 /usr/share/package-licenses/kimap/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
 /usr/share/package-licenses/kimap/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
