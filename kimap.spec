@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 22.12.2
-Release  : 57
-URL      : https://download.kde.org/stable/release-service/22.12.2/src/kimap-22.12.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.12.2/src/kimap-22.12.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.12.2/src/kimap-22.12.2.tar.xz.sig
+Version  : 22.12.3
+Release  : 58
+URL      : https://download.kde.org/stable/release-service/22.12.3/src/kimap-22.12.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.3/src/kimap-22.12.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.3/src/kimap-22.12.3.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0
@@ -90,15 +90,15 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-22.12.2
-cd %{_builddir}/kimap-22.12.2
+%setup -q -n kimap-22.12.3
+cd %{_builddir}/kimap-22.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676845920
+export SOURCE_DATE_EPOCH=1677791732
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -114,7 +114,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1676845920
+export SOURCE_DATE_EPOCH=1677791732
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp %{_builddir}/kimap-%{version}/.codespellrc.license %{buildroot}/usr/share/package-licenses/kimap/c011fda7746c087a127999da1c4044854ee42238 || :
@@ -282,7 +282,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5IMAP.so.5
-/usr/lib64/libKF5IMAP.so.5.22.2
+/usr/lib64/libKF5IMAP.so.5.22.3
 
 %files license
 %defattr(0644,root,root,0755)
