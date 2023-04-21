@@ -8,7 +8,7 @@
 %define keepstatic 1
 Name     : kimap
 Version  : 23.04.0
-Release  : 63
+Release  : 64
 URL      : https://download.kde.org/stable/release-service/23.04.0/src/kimap-23.04.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.0/src/kimap-23.04.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.0/src/kimap-23.04.0.tar.xz.sig
@@ -46,6 +46,7 @@ Requires: kimap-lib = %{version}-%{release}
 Requires: kimap-data = %{version}-%{release}
 Provides: kimap-devel = %{version}-%{release}
 Requires: kimap = %{version}-%{release}
+Requires: kimap-staticdev
 
 %description dev
 dev components for the kimap package.
@@ -95,7 +96,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682098148
+export SOURCE_DATE_EPOCH=1682108235
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -111,7 +112,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682098148
+export SOURCE_DATE_EPOCH=1682108235
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp %{_builddir}/kimap-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/kimap/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
