@@ -9,11 +9,11 @@
 #
 %define keepstatic 1
 Name     : kimap
-Version  : 23.08.3
-Release  : 73
-URL      : https://download.kde.org/stable/release-service/23.08.3/src/kimap-23.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.08.3/src/kimap-23.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.08.3/src/kimap-23.08.3.tar.xz.sig
+Version  : 23.08.4
+Release  : 74
+URL      : https://download.kde.org/stable/release-service/23.08.4/src/kimap-23.08.4.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.4/src/kimap-23.08.4.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.4/src/kimap-23.08.4.tar.xz.sig
 Summary  : Job-based API for interacting with IMAP servers
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0
@@ -90,15 +90,15 @@ staticdev components for the kimap package.
 
 
 %prep
-%setup -q -n kimap-23.08.3
-cd %{_builddir}/kimap-23.08.3
+%setup -q -n kimap-23.08.4
+cd %{_builddir}/kimap-23.08.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1701992083
+export SOURCE_DATE_EPOCH=1702968552
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -157,7 +157,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1701992083
+export SOURCE_DATE_EPOCH=1702968552
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimap
 cp %{_builddir}/kimap-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/kimap/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -330,9 +330,9 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5IMAP.so.5.24.3
+/V3/usr/lib64/libKPim5IMAP.so.5.24.4
 /usr/lib64/libKPim5IMAP.so.5
-/usr/lib64/libKPim5IMAP.so.5.24.3
+/usr/lib64/libKPim5IMAP.so.5.24.4
 
 %files license
 %defattr(0644,root,root,0755)
