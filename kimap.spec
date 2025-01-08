@@ -10,7 +10,7 @@
 %define keepstatic 1
 Name     : kimap
 Version  : 24.12.0
-Release  : 88
+Release  : 89
 URL      : https://download.kde.org/stable/release-service/24.12.0/src/kimap-24.12.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/24.12.0/src/kimap-24.12.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/24.12.0/src/kimap-24.12.0.tar.xz.sig
